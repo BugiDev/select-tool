@@ -13,10 +13,6 @@
         "shelljs": false     // shelljs global variables.
     },
 
-    "ecmaFeatures": {
-        "modules": true
-    },
-
     "parser": "babel-eslint",
 
     "globals": {

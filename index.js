@@ -3,5 +3,6 @@
  */
 
 import Selection from './src/Selection';
+import './style/style.scss';
 
 Selection.init();

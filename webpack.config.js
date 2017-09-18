@@ -1,6 +1,8 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './index.html',
     filename: 'index.html',
@@ -14,15 +16,35 @@ module.exports = {
         filename: 'index_bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loaders: ['babel-loader', 'eslint-loader']
+                use: ['babel-loader', 'eslint-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {loader: 'css-loader', options: {sourceMap: true}},
+                        {loader: 'sass-loader', options: {sourceMap: true}}
+                    ]
+                })
             }
         ]
     },
     plugins:[
-        HtmlWebpackPluginConfig
-    ]
+        HtmlWebpackPluginConfig,
+        new ExtractTextPlugin({
+            filename: 'style/styles.css'
+        })
+    ],
+    stats: {
+        // Colored output
+        colors: true
+    },
+
+    // Create Sourcemaps for the bundle
+    devtool: 'source-map'
 };
