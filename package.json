@@ -1,0 +1,33 @@
+{
+  "name": "select-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BugiDev/select-tool.git"
+  },
+  "author": "Bogdan Begovic <bogdanbegovic@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BugiDev/select-tool/issues"
+  },
+  "homepage": "https://github.com/BugiDev/select-tool#readme",
+  "dependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "path": "^0.12.7",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.6.0",
+    "eslint-loader": "^1.9.0"
+  }
+}
