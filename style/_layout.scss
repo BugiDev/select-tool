@@ -1,0 +1,8 @@
+.wrapper {
+    padding: 0 15px 0 15px;
+}
+
+::selection {
+    background: $color-twitter-blue;
+    color: $color-white;
+}

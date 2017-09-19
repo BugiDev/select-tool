@@ -28,8 +28,26 @@ class Popover {
     reposition() {
         const selecitionDimensions = Selection.getDimensions();
 
-        this.popover.style.top = ((selecitionDimensions.top + document.body.scrollTop) - this.popover.offsetHeight) - 10 + 'px';
-        this.popover.style.left = ((selecitionDimensions.left + document.body.scrollLeft) + Math.floor(selecitionDimensions.width / 2) - Math.floor(this.popover.offsetWidth / 2)) + 'px';
+        let calculatedTop = ((selecitionDimensions.top + document.body.scrollTop) - this.popover.offsetHeight) - 10;
+        let calculatedLeft = ((selecitionDimensions.left + document.body.scrollLeft) + Math.floor(selecitionDimensions.width / 2) - Math.floor(this.popover.offsetWidth / 2));
+        let calculatedBottom;
+
+        if (calculatedTop < 0) {
+            calculatedBottom = selecitionDimensions.bottom;
+            this.popover.style.top = calculatedBottom + 10 + 'px';
+        } else {
+            this.popover.style.top = calculatedTop + 'px';
+        }
+
+        if (calculatedLeft < 10) {
+            calculatedLeft = 10;
+        }
+
+        this.popover.style.left = calculatedLeft + 'px';
+
+        console.log(this.popover.style.top);
+        console.log(this.popover.style.left);
+
     }
 
     setHrefLink() {
