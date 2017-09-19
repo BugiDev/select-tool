@@ -15,16 +15,33 @@ class Selection {
         return instance;
     }
 
-    init() {
-        const me = this;
-        document.onselectionchange = function() {
-            me.selection = document.getSelection();
-            console.log(me.getSelectedText());
-        };
+    setSelection(selection) {
+        this.selection = selection;
+    }
+
+    getSelection() {
+        return this.selection;
     }
 
     getSelectedText() {
         return this.selection.getRangeAt(0).toString();
+    }
+
+    isCollapsed() {
+        return this.selection.isCollapsed();
+    }
+
+    getDimensions() {
+        const boundingClientRect = this.selection.getRangeAt(0).getBoundingClientRect();
+        return {
+            top: boundingClientRect.top,
+            bottom: boundingClientRect.bottom,
+            left: boundingClientRect.left,
+            right: boundingClientRect.right,
+
+            width: boundingClientRect.width,
+            height: boundingClientRect.height
+        };
     }
 
 }

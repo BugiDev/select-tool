@@ -31,10 +31,21 @@ module.exports = {
                         {loader: 'sass-loader', options: {sourceMap: true}}
                     ]
                 })
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
             }
         ]
     },
-    plugins:[
+    plugins: [
         HtmlWebpackPluginConfig,
         new ExtractTextPlugin({
             filename: 'style/styles.css'
