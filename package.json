@@ -1,7 +1,7 @@
 {
   "name": "select-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "Select tool is a demo project exploring the Selection API. When text is selected, it exposes a twitter share button, that, when clicked, is opening a separate window for twitting the selected text.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
