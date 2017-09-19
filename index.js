@@ -10,7 +10,7 @@ document.onselectionchange = function() {
 
     Selection.setSelection(document.getSelection());
 
-    if (document.getSelection().isCollapsed) {
+    if (Selection.isCollapsed()) {
         Popover.hide();
     } else {
         Popover.show();

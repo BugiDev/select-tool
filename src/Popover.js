@@ -6,6 +6,9 @@ import Selection from './Selection';
 
 let instance = null;
 
+/*
+ Singleton class used for Popover show/hide functionality and position calculation.
+ */
 class Popover {
     constructor() {
         if (!instance) {
@@ -17,39 +20,51 @@ class Popover {
         return instance;
     }
 
+    /*
+    Method for showing the popover.
+     */
     show() {
         this.popover.style.display = 'block';
     }
 
+    /*
+     Method for hiding the popover.
+     */
     hide() {
         this.popover.style.display = 'none';
     }
 
+    /*
+     Method for calculating the popover position and setting the position based on selected text dimensions.
+     */
     reposition() {
-        const selecitionDimensions = Selection.getDimensions();
+        const selectionDimensions = Selection.getDimensions();
 
-        let calculatedTop = ((selecitionDimensions.top + document.body.scrollTop) - this.popover.offsetHeight) - 10;
-        let calculatedLeft = ((selecitionDimensions.left + document.body.scrollLeft) + Math.floor(selecitionDimensions.width / 2) - Math.floor(this.popover.offsetWidth / 2));
-        let calculatedBottom;
+        let calculatedTop = ((selectionDimensions.top + document.body.scrollTop) - this.popover.offsetHeight) - 10;
+        let calculatedLeft = ((selectionDimensions.left + document.body.scrollLeft) + Math.floor(selectionDimensions.width / 2) - Math.floor(this.popover.offsetWidth / 2));
 
         if (calculatedTop < 0) {
-            calculatedBottom = selecitionDimensions.bottom;
-            this.popover.style.top = calculatedBottom + 10 + 'px';
+            this.popover.style.top = selectionDimensions.bottom + 10 + 'px';
         } else {
             this.popover.style.top = calculatedTop + 'px';
         }
 
+        //Minimal left is 10px
         if (calculatedLeft < 10) {
             calculatedLeft = 10;
         }
 
+        //Maximal left is clientWidth minus size of the twitter share button plus 10px for padding
+        if (calculatedLeft > document.documentElement.clientWidth - 60) {
+            calculatedLeft = document.documentElement.clientWidth - 60;
+        }
+
         this.popover.style.left = calculatedLeft + 'px';
-
-        console.log(this.popover.style.top);
-        console.log(this.popover.style.left);
-
     }
 
+    /*
+     Method for setting the href parameter of the popover anchor tag.
+     */
     setHrefLink() {
         this.popover.href = 'http://twitter.com/intent/tweet?text=' + encodeURI(Selection.getSelectedText());
     }

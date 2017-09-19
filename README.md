@@ -4,7 +4,7 @@ Select tool is a demo project exploring the Selection API. When text is selected
 
 ### Tech
 
-Select tool is written in pure ES6, with sass for styling and webpack + babel as build/transpiling tools. It also uses Twitter SDK to show up the twitter window.
+Select tool is written in pure ES6, with sass for styling and webpack + babel as build/transpiling tools. It also uses Twitter SDK to show up the twitter window and is also optimized for mobile viewing experience.
 
 ### Installation and prerequisites 
 
